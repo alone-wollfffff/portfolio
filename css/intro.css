@@ -1,0 +1,260 @@
+/* ================================================================
+   INTRO — Cinematic Terminal → Galaxy → OM → Shatter
+================================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Orbitron:wght@500;900&family=Space+Grotesk:wght@300;400;700&display=swap');
+
+:root {
+  --p1: #c77dff;
+  --p2: #9d4edd;
+  --acc: #00d4ff;
+  --tglow: 0 0 20px rgba(199,125,255,0.9), 0 0 50px rgba(157,78,221,0.5);
+}
+
+#intro-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #000005;
+  transition: opacity 2s ease;
+}
+#intro-wrapper.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── TERMINAL ── */
+#terminal-phase {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px;
+  z-index: 100;
+  transition: opacity .6s ease;
+}
+.term-line {
+  font-family: 'Fira Code', monospace;
+  font-size: 1.1rem;
+  line-height: 1.65;
+  margin-bottom: 4px;
+  color: var(--p1);
+  text-shadow: 0 0 5px rgba(199,125,255,.5);
+}
+.success {
+  color: #00ffcc;
+  text-shadow: 0 0 8px rgba(0,255,204,.6);
+}
+.term-cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1.1rem;
+  background: var(--p1);
+  animation: termBlink .8s infinite;
+}
+@keyframes termBlink {
+  0%, 49%  { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* ── GALAXY PHASE ── */
+#canvas-phase {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  z-index: 50;
+  transition: opacity 1s ease;
+}
+#gc {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* ── HUD ── */
+.hud {
+  position: absolute;
+  font-family: 'Fira Code', monospace;
+  font-size: .6rem;
+  letter-spacing: 2.5px;
+  color: rgba(199,125,255,.38);
+  text-transform: uppercase;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  line-height: 1.8;
+}
+.hud.show { opacity: 1; }
+.h-tl { top: 18px; left: 22px; }
+.h-tr { top: 18px; right: 22px; text-align: right; }
+.h-bl { bottom: 18px; left: 22px; }
+.h-br { bottom: 18px; right: 22px; text-align: right; }
+
+/* ── Corner brackets ── */
+.brk {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.brk.show { opacity: 1; }
+.b-tl { top: 13px; left: 13px;   border-top: 1px solid var(--p1); border-left: 1px solid var(--p1); }
+.b-tr { top: 13px; right: 13px;  border-top: 1px solid var(--p1); border-right: 1px solid var(--p1); }
+.b-bl { bottom: 13px; left: 13px;  border-bottom: 1px solid var(--p1); border-left: 1px solid var(--p1); }
+.b-br { bottom: 13px; right: 13px; border-bottom: 1px solid var(--p1); border-right: 1px solid var(--p1); }
+
+/* ── Galaxy rings ── */
+.gr-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+.gr-wrap.show { opacity: 1; }
+.gr {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid transparent;
+}
+
+/* Ring A: massive tilted upper-left */
+.gA {
+  width: 700px; height: 700px; top: -220px; left: -180px;
+  border-color: rgba(157,78,221,.14);
+  border-top-color: rgba(199,125,255,.30);
+  transform: rotate(-42deg) rotateX(65deg);
+  animation: rA 24s linear infinite;
+}
+@keyframes rA { to { transform: rotate(318deg) rotateX(65deg); } }
+
+/* Ring B: medium right side */
+.gB {
+  width: 480px; height: 480px; top: 20%; right: -100px;
+  border-color: rgba(0,180,255,.10);
+  border-right-color: rgba(0,212,255,.28);
+  transform: rotate(60deg) rotateY(55deg);
+  animation: rB 17s linear infinite;
+}
+@keyframes rB { to { transform: rotate(-300deg) rotateY(55deg); } }
+
+/* Ring C: small bottom-left */
+.gC {
+  width: 320px; height: 320px; bottom: -80px; left: 8%;
+  border-color: rgba(199,125,255,.09);
+  border-bottom-color: rgba(199,125,255,.25);
+  transform: rotate(28deg) rotateX(-60deg);
+  animation: rC 13s linear infinite;
+}
+@keyframes rC { to { transform: rotate(388deg) rotateX(-60deg); } }
+
+/* Ring D: huge flat ellipse center */
+.gD {
+  width: 980px; height: 240px; top: 50%; left: 50%;
+  margin: -120px 0 0 -490px;
+  border: 1px solid rgba(157,78,221,.07);
+  border-top-color: rgba(199,125,255,.13);
+  border-bottom-color: rgba(199,125,255,.13);
+  transform: rotate(-10deg) rotateX(80deg);
+  animation: rD 38s linear infinite;
+}
+@keyframes rD { to { transform: rotate(350deg) rotateX(80deg); } }
+
+/* Ring E: top-right */
+.gE {
+  width: 400px; height: 400px; top: -60px; right: 12%;
+  border: 1px dashed rgba(0,212,255,.08);
+  border-top-color: rgba(0,212,255,.20);
+  transform: rotate(72deg) rotateY(-42deg);
+  animation: rE 21s linear infinite;
+}
+@keyframes rE { to { transform: rotate(-288deg) rotateY(-42deg); } }
+
+/* Ring F: mid-left tall oval */
+.gF {
+  width: 200px; height: 460px; top: 15%; left: 5%;
+  border: 1px solid rgba(199,125,255,.06);
+  border-left-color: rgba(199,125,255,.18);
+  transform: rotate(-25deg) rotateY(40deg);
+  animation: rF 30s linear infinite;
+}
+@keyframes rF { to { transform: rotate(335deg) rotateY(40deg); } }
+
+/* ── Scanner ── */
+#scanner-line {
+  position: absolute;
+  left: 0; right: 0; height: 2px; top: -2px;
+  z-index: 8;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(0,212,255,.2) 15%, #00d4ff 50%, rgba(0,212,255,.2) 85%, transparent 100%);
+  box-shadow: 0 0 6px 2px rgba(0,212,255,.9), 0 0 18px 5px rgba(0,212,255,.4), 0 0 40px 10px rgba(0,212,255,.12);
+  transition: opacity .3s ease;
+}
+#scanner-line::after {
+  content: '';
+  position: absolute;
+  inset: 2px 0 auto 0;
+  height: 80px;
+  background: linear-gradient(180deg, rgba(0,212,255,.06), transparent);
+}
+#scan-lbl {
+  position: absolute;
+  right: 24px;
+  top: 6px;
+  font-family: 'Fira Code', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: rgba(0,212,255,.65);
+}
+
+/* ── Info block ── */
+#info-block {
+  position: absolute;
+  z-index: 9;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 1.6s ease, bottom .6s ease;
+  white-space: nowrap;
+}
+#info-block.show { opacity: 1; }
+
+#full-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1rem, 2.2vw, 1.5rem);
+  color: #fff;
+  letter-spacing: 3px;
+  text-shadow: var(--tglow);
+  text-align: center;
+}
+#roles {
+  font-family: 'Fira Code', monospace;
+  font-size: clamp(.55rem, 1vw, .75rem);
+  color: rgba(224,170,255,.75);
+  letter-spacing: 4px;
+  margin-top: 6px;
+  text-align: center;
+}
+#status-lbl {
+  font-family: 'Fira Code', monospace;
+  font-size: .62rem;
+  letter-spacing: 5px;
+  color: rgba(199,125,255,.75);
+  text-transform: uppercase;
+  margin-top: 8px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity .5s ease;
+  min-height: 1rem;
+}
+#status-lbl.show { opacity: 1; }
