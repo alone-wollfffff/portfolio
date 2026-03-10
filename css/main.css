@@ -1186,9 +1186,9 @@ header.show { opacity: 1; transform: translateY(0) }
     overflow-y: auto;
     gap: 0;
     
-    background: rgba(0, 0, 0, 0.96);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    background: transparent;
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
     
     /* THE FIX: Smooth fade & scale instead of pushing off-screen */
     opacity: 0;
