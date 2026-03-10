@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<!--
+  Om Balaji Varpe — Projects Page
+  4 fullpage sections (P0–P3):
+    P0  Hero          — full-screen, outside sticky card
+    P1  Data Alchemy  — sticky card, timeline layout
+    P2  Deploy Alchemy — sticky card, timeline layout
+    P3  Coming Soon   — full-screen, outside sticky card
+
+  Same architecture as index.html: P1–P2 inside #sticky-card.
+  Add more project sections inside sticky-card, update TOTAL in projects.js.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Om Balaji Varpe — Projects: Data Alchemy, Deploy Alchemy, and more."/>
+  <link rel="icon" type="image/png" href="src/icon.png"/>
+
+  <title>Projects — Om Balaji Varpe</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link rel="stylesheet" href="css/projects.css"/>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<div id="preloader">
+  <div class="pl-cover left"></div>
+  <div class="pl-cover right"></div>
+  <div id="pl-num">0</div>
+</div>
+
+
+
+<header id="hdr">
+  
+  <div class="header-left">
+    <div class="logo">OBV</div>
+  </div>
+
+  <nav id="main-nav">
+    <a href="index.html">Home</a>
+  </nav>
+  <button id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  
+</header>
+
+<!-- Scroll nav dots — 4 sections -->
+<div id="scroll-nav">
+  <div class="sn-dot active" data-sec="0"><span></span></div>
+  <div class="sn-dot"        data-sec="1"><span></span></div>
+  <div class="sn-dot"        data-sec="2"><span></span></div>
+  <div class="sn-dot"        data-sec="3"><span></span></div>
+</div>
+
+<div id="app">
+
+  <!-- P0 · HERO — full-screen, transparent, outside sticky card -->
+  <section class="screen" id="p0">
+    <div class="proj-hero-inner">
+
+      <div class="opp-badge slide-up-elm">
+            <span class="opp-icon">⚡</span>// Projects...
+          </div>
+      <div class="slidein">
+        <h1 class="built-h2 slidein-elm">What I've Built...</h1>
+      </div>
+      <div class="slidein">
+        <p class="proj-hero-sub slidein-elm">End-to-end ML systems, AI tools, and intelligent web apps — built from scratch and deployed to production.</p>
+      </div>
+      <div class="slidein">
+        <div class="proj-stats slidein-elm">
+          <div class="proj-stat-item">
+            <span class="proj-stat-n">02</span>
+            <span class="proj-stat-l">Live Projects</span>
+          </div>
+          <div class="proj-stat-item">
+            <span class="proj-stat-n">∞</span>
+            <span class="proj-stat-l">In Progress</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-scroll-hint">
+        <div class="sh-line"></div>
+        <span>Scroll to Explore</span>
+      </div>
+
+    </div>
+  </section><!-- /p0 -->
+
+
+  <!-- STICKY CARD — wraps P1 and P2 -->
+  <div id="sticky-card">
+
+    <!-- P1 · DATA ALCHEMY — card LEFT, mockup RIGHT -->
+    <section class="screen" id="p1">
+      <div class="tl-line"></div>
+
+      <div class="tl-top">
+        <div class="slide-up"><p class="tl-status slide-up-elm">// IN PRODUCTION</p></div>
+        <div class="slide-up"><p class="tl-num   slide-up-elm">01</p></div>
+        <div class="slide-up"><div class="tl-play slide-up-elm">▶</div></div>
+      </div>
+
+      <div class="tl-card-zone left">
+        <div class="tl-dot"></div>
+        <div class="slide-left">
+          <div class="tl-card slide-left-elm">
+            <p class="pcb-meta">// Project 01 · 2024 – Present</p>
+            <h3 class="pcb-title">🔮 Data Alchemy</h3>
+            <p class="pcb-desc">Automated ML Pipeline. A no-code tool that handles the full data science workflow — deep EDA with D-Tale and ydata-profiling, preprocessing and feature engineering via AutoFeat, and model training with AWS AutoGluon. Outputs a ready-to-deploy ZIP.</p>
+            <div class="pcb-tags">
+              <span>Python</span><span>React</span><span>FastAPI</span>
+              <span>AutoGluon</span><span>AutoFeat</span><span>D-Tale</span><span>HuggingFace</span>
+            </div>
+            <!-- <a href="https://lonewollff-data-alchemy.hf.space/" target="_blank" rel="noopener" class="pcb-link-tl">🚀 Live Demo ↗</a> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-mockup-zone right">
+        <div class="slide-right">
+          <div class="tl-mockup slide-right-elm">
+            <div class="bm-chrome">
+              <span class="bm-dot rd"></span><span class="bm-dot yw"></span><span class="bm-dot gn"></span>
+              <div class="bm-url">lonewollff-data-alchemy.hf.space</div>
+            </div>
+            <a href="https://lonewollff-data-alchemy.hf.space/" target="_blank" rel="noopener" class="bm-video-wrap">
+              <video src="src/data alchemy.mp4" autoplay loop muted playsinline></video>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-bottom-peek">
+        <div class="slide-up"><p class="tl-status slide-up-elm" style="opacity:.35">// DEPLOYED</p></div>
+        <div class="slide-up"><p class="tl-num   slide-up-elm" style="opacity:.2">02</p></div>
+        <div class="tl-dot-sm"></div>
+      </div>
+    </section><section class="screen" id="p2">
+      <div class="tl-line"></div>
+
+      <div class="tl-top">
+        <div class="slide-up"><p class="tl-status slide-up-elm">// DEPLOYED</p></div>
+        <div class="slide-up"><p class="tl-num   slide-up-elm">02</p></div>
+        <div class="slide-up"><div class="tl-play slide-up-elm">▶</div></div>
+      </div>
+
+      <div class="tl-card-zone right">
+        <div class="tl-dot"></div>
+        <div class="slide-right">
+          <div class="tl-card slide-right-elm">
+            <p class="pcb-meta">// Project 02 · 2024 – Present</p>
+            <h3 class="pcb-title">🚢 Deploy Alchemy</h3>
+            <p class="pcb-desc">The perfect sequel to Data Alchemy. Takes your trained model ZIP and auto-generates a fully functional REST API. Download → extract → install → run. Your ML model is live in under 60 seconds.</p>
+            <div class="pcb-tags">
+              <span>Python</span><span>React</span><span>FastAPI</span>
+              <span>AutoGluon</span><span>HuggingFace</span><span>Ydata-Profiling</span>
+            </div>
+            <!-- <a href="https://lonewollff-deploy-alchemy.hf.space/" target="_blank" rel="noopener" class="pcb-link-tl">🚀 Live Demo ↗</a> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-mockup-zone left">
+        <div class="slide-left">
+          <div class="tl-mockup slide-left-elm">
+            <div class="bm-chrome">
+              <span class="bm-dot rd"></span><span class="bm-dot yw"></span><span class="bm-dot gn"></span>
+              <div class="bm-url">lonewollff-deploy-alchemy.hf.space</div>
+            </div>
+            <a href="https://lonewollff-deploy-alchemy.hf.space/" target="_blank" rel="noopener" class="bm-video-wrap">
+              <video src="src/data alchemy.mp4" autoplay loop muted playsinline></video>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-bottom-peek">
+        <div class="slide-up"><p class="tl-status slide-up-elm" style="opacity:.35">// LOADING...</p></div>
+        <div class="slide-up"><p class="tl-num   slide-up-elm" style="opacity:.2">03</p></div>
+        <div class="tl-dot-sm"></div>
+      </div>
+    </section>
+
+    <!--
+      TO ADD MORE PROJECTS: copy one of the sections above (p1 or p2),
+      change the id to p3, p4... update TOTAL in js/projects.js,
+      add a scroll nav dot, and update inCard range accordingly.
+    -->
+
+  </div><!-- /sticky-card -->
+
+
+  <!-- P3 · MORE COMING SOON — full-screen, outside sticky card -->
+  <section class="screen" id="p3">
+
+    <div class="geo-tri" style="top:15%;left:4%;width:36px;height:36px;opacity:.25"></div>
+    <div class="geo-tri" style="bottom:20%;right:6%;width:28px;height:28px;opacity:.2"></div>
+    <div class="geo-sq"  style="top:45%;left:8%;width:7px;height:7px;opacity:.2"></div>
+    <div class="geo-sq"  style="bottom:35%;right:5%;width:9px;height:9px;opacity:.18"></div>
+
+    <div class="contact-inner">
+      <div class="slidein"><p class="cert-sec-label slidein-elm">// What's Next</p></div>
+      <div class="slidein">
+        <h2 class="contact-h2 slidein-elm">More Projects<br/><em style="font-style:italic;color:rgba(255,255,255,.45)">Coming Soon...</em></h2>
+      </div>
+      <div class="slidein">
+        <p class="contact-sub slidein-elm">New projects are actively in development — from agentic AI systems to advanced data pipelines.<br/>Check back soon, or reach out to collaborate.</p>
+      </div>
+      <div class="slidein">
+        <div class="contact-btns slidein-elm">
+          <a href="https://github.com/lonewollff"           target="_blank" rel="noopener" class="cta-btn"><span class="cta-icon">⊙</span>GitHub Profile</a>
+          <a href="https://lonewollff-data-alchemy.hf.space/" target="_blank" rel="noopener" class="cta-btn"><span class="cta-icon">⚡</span>HuggingFace Space</a>
+          <a href="mailto:omvarpe@gmail.com"                                                class="cta-btn"><span class="cta-icon">✉</span>Get In Touch</a>
+          <a href="index.html"                                                              class="cta-btn"><span class="cta-icon">←</span>Back to Home</a>
+        </div>
+      </div>
+    </div>
+
+  </section><!-- /p3 -->
+
+</div><!-- /app -->
+
+<script src="js/shared.js"></script>
+<script src="js/projects.js"></script>
+</body>
+</html>

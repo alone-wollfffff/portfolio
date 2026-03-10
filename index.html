@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<!--
+  Om Balaji Varpe — Portfolio
+  10 fullpage sections (S0–S9):
+    S0  Hero         — full-screen, outside sticky card
+    S1  About        — sticky card, two-column
+    S2  Skills       — sticky card, two-column
+    S3  Projects     — sticky card, centred heading
+    S4  Project 01   — sticky card, timeline layout
+    S5  Project 02   — sticky card, timeline layout
+    S6  Project 03   — sticky card, coming soon
+    S7  Cert Heading — sticky card, centred + legend
+    S8  Cert Gallery — sticky card, wheel picker UI
+    S9  Contact      — full-screen, outside sticky card
+
+  S1–S8 live inside #sticky-card (position:fixed, CSS transform).
+  #sticky-card's transform creates a stacking context — keep any
+  position:fixed children (e.g. tooltips) OUTSIDE the card.
+  Navigation via data-sec attributes, driven by site.js.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Om Balaji Varpe — Data Scientist, AI Engineer & Prompt Engineer, Mumbai."/>
+  <link rel="icon" type="image/png" href="src/icon.png"/>
+  <link rel="preload" as="image" href="src/pic.png"/>
+
+  <title>Om Balaji Varpe — Data Scientist & AI Engineer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+
+  <!-- Three.js r128 — renders the 3D background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <link rel="stylesheet" href="css/main.css"/>
+</head>
+<body>
+
+<!-- Three.js canvas — z-index:0, always behind everything -->
+<canvas id="bg"></canvas>
+
+<!-- Preloader — two panels slide apart after counter reaches 100 -->
+<div id="preloader">
+  <div class="pl-cover left"></div>
+  <div class="pl-cover right"></div>
+  <div id="pl-num">0</div>
+</div>
+
+<!-- Header — fixed top bar, slides in after preloader -->
+<header id="hdr">
+  <div class="logo">OBV</div>
+  <nav id="main-nav">
+    <a href="#" data-sec="0">Home</a>
+    <a href="#" data-sec="1">About</a>
+    <a href="#" data-sec="2">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="#" data-sec="4">Certs</a>
+    <a href="#" data-sec="6">Contact</a>
+  </nav>
+  <button id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</header>
+
+<!-- Scroll nav dots — one per section, right edge -->
+<div id="scroll-nav">
+  <div class="sn-dot active" data-sec="0"><span></span></div>
+  <div class="sn-dot"        data-sec="1"><span></span></div>
+  <div class="sn-dot"        data-sec="2"><span></span></div>
+  <div class="sn-dot"        data-sec="3"><span></span></div>
+  <div class="sn-dot"        data-sec="4"><span></span></div>
+  <div class="sn-dot"        data-sec="5"><span></span></div>
+  <div class="sn-dot"        data-sec="6"><span></span></div>
+</div>
+
+<div id="app">
+
+  <!-- S0 · HERO — full-screen, transparent, outside sticky card -->
+  <section class="screen" id="s0">
+    <div class="s-inner hero-inner">
+
+      <div class="hero-left">
+        <div class="slide-up delay-0">
+          <div class="opp-badge slide-up-elm">
+            <span class="opp-icon">⚡</span>Open to Opportunities
+          </div>
+        </div>
+        <div class="slide-left delay-1">
+          <h1 class="hero-h1 slide-left-elm">Om Balaji<br/>Varpe</h1>
+        </div>
+        <div class="slide-left delay-2">
+          <p class="hero-role slide-left-elm">// AI / ML Engineer</p>
+        </div>
+        <div class="slide-left delay-3">
+          <p class="hero-desc slide-left-elm">Final-year Computer Engineering student from Mumbai, building intelligent systems and data-driven solutions. Passionate about ML, LLMs, and turning raw data into real insight.</p>
+        </div>
+        <div class="slide-up delay-4">
+          <div class="hero-btns slide-up-elm">
+            <a href="projects.html" class="btn-fill">⚡ View Projects</a>
+            <button class="btn-outline" data-sec="6">📞 Get In Touch</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- float-up-enter has a built-in .35s delay — do NOT add .delay-N here -->
+      <div class="hero-right">
+        <div class="hero-photo-wrap float-up-enter">
+          <img src="src/pic.png" alt="Om Balaji Varpe" class="hero-photo-img"/>
+          <div class="skill-badge sb-1 slide-right delay-3"><span class="sb-dot"></span>Python · AutoML</div>
+          <div class="skill-badge sb-2 slide-right delay-4"><span class="sb-dot"></span>LLM Prompting</div>
+          <div class="skill-badge sb-3 slide-right delay-5"><span class="sb-dot"></span>Data Science</div>
+          <div class="skill-badge sb-4 slide-right delay-6"><span class="sb-dot"></span>Web Development</div>
+          <div class="hero-sparkle">✦</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="scroll-hint">
+      <div class="sh-line"></div>
+      <span>SCROLL</span>
+    </div>
+  </section><!-- /s0 -->
+
+
+  <!-- STICKY CARD — wraps S1–S8 -->
+  <div id="sticky-card">
+
+    <!-- S1 · ABOUT -->
+    <section class="screen" id="s1">
+      <div class="s-inner about-inner">
+
+        <div class="about-left">
+          <div class="slidein"><h2 class="sec-h2 slidein-elm">Who<br/><em>I Am</em></h2></div>
+        </div>
+
+        <div class="about-right">
+          <div class="slidein">
+            <p class="body-lg slidein-elm">I'm <strong>Om Balaji Varpe</strong>, a final-year Computer Engineering student at the University of Mumbai.</p>
+          </div>
+          <div class="slidein">
+            <p class="body-text slidein-elm">Deeply fascinated by the intersection of <strong>Data Science, Machine Learning, and AI Prompting</strong>. I love building end-to-end ML systems and crafting intelligent prompts that make LLMs genuinely useful.</p>
+          </div>
+          <div class="slidein">
+            <p class="body-text slidein-elm">My toolkit spans AutoML frameworks, React apps, FastAPI backends, and hands-on work with ChatGPT, Claude, Gemini &amp; Copilot.</p>
+          </div>
+          <div class="slidein">
+            <div class="stat-row slidein-elm">
+              <div class="stat"><span class="stat-n">3+</span><span class="stat-l">Live Projects</span></div>
+              <div class="stat"><span class="stat-n">13+</span><span class="stat-l">Certificates</span></div>
+              <div class="stat"><span class="stat-n">5+</span><span class="stat-l">LLM Tools</span></div>
+              <div class="stat"><span class="stat-n">∞</span><span class="stat-l">Curiosity</span></div>
+            </div>
+          </div>
+          <div class="slidein">
+            <div class="edu-list slidein-elm">
+              <div class="edu-item">
+                <span class="edu-yr">2023–2026</span>
+                <span class="edu-deg">B.E. Computer Engineering — University of Mumbai</span>
+              </div>
+              <div class="edu-item">
+                <span class="edu-yr">2020-2023</span>
+                <span class="edu-deg">HSC (Diploma) Science — Nirmala Memorial Foundation College</span>
+              </div>
+              <div class="edu-item">
+                <span class="edu-yr">2019</span>
+                <span class="edu-deg">SSC (10th) — New National English Medium School</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- /s1 -->
+
+
+    <!-- S2 · SKILLS -->
+    <section class="screen" id="s2">
+      <div class="s-inner skills-inner">
+
+        <div class="skills-left">
+          <div class="slidein"><h2 class="sec-h2 slidein-elm">What I<br/><em>Work With</em></h2></div>
+        </div>
+
+        <div class="skills-right">
+          <div class="slidein">
+            <div class="skill-group slidein-elm">
+              <p class="sg-label">Machine Learning &amp; AI</p>
+              <div class="tags">
+                <span>AutoGluon</span><span>AutoFeat</span><span>scikit-learn</span>
+                <span>XGBoost</span><span>LightGBM</span><span>D-Tale</span><span>ydata-profiling</span>
+              </div>
+            </div>
+          </div>
+          <div class="slidein">
+            <div class="skill-group slidein-elm">
+              <p class="sg-label">LLMs &amp; Prompt Engineering</p>
+              <div class="tags">
+                <span>ChatGPT</span><span>Claude</span><span>Gemini</span>
+                <span>Copilot</span><span>RAG</span><span>Chain-of-Thought</span>
+              </div>
+            </div>
+          </div>
+          <div class="slidein">
+            <div class="skill-group slidein-elm">
+              <p class="sg-label">Dev Stack</p>
+              <div class="tags">
+                <span>Python</span><span>FastAPI</span><span>React</span>
+                <span>SQL</span><span>Git</span><span>Docker</span>
+              </div>
+            </div>
+          </div>
+          <div class="slidein">
+            <div class="skill-group slidein-elm">
+              <p class="sg-label">Cloud &amp; Deployment</p>
+              <div class="tags">
+                <span>HuggingFace</span><span>AWS</span><span>Streamlit</span>
+                <span>Gradio</span><span>Pandas</span><span>NumPy</span>
+              </div>
+            </div>
+          </div>
+          <!-- data-w = target width %; JS animates 0 → data-w% on enter, resets on leave -->
+          <div class="slidein">
+            <div class="skill-bars slidein-elm">
+              <div class="sb-row"><span class="sbl">Python / Data</span>  <div class="sbt"><div class="sbf" data-w="92"></div></div><span class="sbp">92%</span></div>
+              <div class="sb-row"><span class="sbl">Machine Learning</span><div class="sbt"><div class="sbf" data-w="88"></div></div><span class="sbp">88%</span></div>
+              <div class="sb-row"><span class="sbl">LLM Prompting</span>   <div class="sbt"><div class="sbf" data-w="90"></div></div><span class="sbp">90%</span></div>
+              <div class="sb-row"><span class="sbl">React / FastAPI</span> <div class="sbt"><div class="sbf" data-w="78"></div></div><span class="sbp">78%</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- /s2 -->
+
+
+    <!-- S3 · PROJECTS SPLASH — teaser, heading links to projects page -->
+    <section class="screen" id="s3">
+      <div class="built-inner">
+        <div class="slidein">
+          <h2 class="built-h2 slidein-elm">
+            <a href="projects.html" class="built-h2-link">What I've Built...</a>
+          </h2>
+        </div>
+        <div class="slidein">
+          <a href="projects.html" class="built-view-all slidein-elm">View All Projects ↗</a>
+        </div>
+      </div>
+    </section><!-- /s3 -->
+
+
+    <!-- S4 · CERTIFICATIONS HEADING -->
+    <section class="screen" id="s4">
+      <div class="cert-head-inner">
+        <div class="slidein"><h2 class="cert-head-h2 slidein-elm">Credentials &amp; Learning</h2></div>
+        <div class="slidein">
+          <div class="cert-legend slidein-elm">
+            <span><i class="cleg-dot" style="background:#a855f7"></i>AI &amp; Prompt Engineering</span>
+            <span><i class="cleg-dot" style="background:#06b6d4"></i>Data Science &amp; ML</span>
+            <span><i class="cleg-dot" style="background:#22c55e"></i>SQL &amp; Dev Tools</span>
+          </div>
+        </div>
+        <div class="slidein">
+        </div>
+      </div>
+    </section><!-- /s4 -->
+
+
+    <!-- S5 · CERTIFICATION GALLERY — wheel picker UI built by JS -->
+    <section class="screen" id="s5">
+      <div class="cert-browser-inner">
+
+        <div class="cb-col cb-wheel-wrap" id="col1-wrap">
+          <div class="cb-wheel-highlight"></div>
+          <div class="cb-wheel" id="cb-categories"></div>
+        </div>
+
+        <div class="cb-col cb-wheel-wrap" id="col2-wrap">
+          <div class="cb-wheel-highlight"></div>
+          <div class="cb-wheel" id="cb-cert-list"></div>
+        </div>
+
+        <div class="cb-col cb-view-col">
+          <a href="#" target="_blank" rel="noopener" id="cb-view-link" class="cb-view-card">
+            <img src="" id="cb-view-img" alt="Certificate Preview"/>
+          </a>
+        </div>
+
+      </div>
+    </section><!-- /s5 -->
+
+  </div><!-- /sticky-card -->
+
+
+  <!-- S6 · CONTACT — full-screen, outside sticky card -->
+  <section class="screen" id="s6">
+
+    <div class="geo-tri" style="bottom:10%;left:3%;width:40px;height:40px;opacity:.3"></div>
+    <div class="geo-tri" style="top:20%;right:5%;width:30px;height:30px;opacity:.2"></div>
+    <div class="geo-sq"  style="top:40%;right:8%;width:8px;height:8px;opacity:.25"></div>
+    <div class="geo-sq"  style="bottom:30%;left:6%;width:7px;height:7px;opacity:.2"></div>
+
+    <div class="contact-inner">
+      <div class="slidein"><p class="cert-sec-label slidein-elm">05. Contact</p></div>
+      <div class="slidein"><h2 class="contact-h2 slidein-elm">Let's Connect 🚀</h2></div>
+      <div class="slidein">
+        <p class="contact-sub slidein-elm">I'm actively looking for opportunities in Data Science, AI/ML &amp; Prompt Engineering.<br/>Let's build something amazing together.</p>
+      </div>
+      <div class="slidein">
+        <div class="contact-btns slidein-elm">
+          <a href="mailto:omvarpe@gmail.com"                                             class="cta-btn"><span class="cta-icon">✉</span>Email Me</a>
+          <a href="https://www.linkedin.com/in/om-varpe"   target="_blank" rel="noopener" class="cta-btn"><span class="cta-icon">in</span>LinkedIn Profile</a>
+          <a href="https://github.com/lonewollff"           target="_blank" rel="noopener" class="cta-btn"><span class="cta-icon">⊙</span>GitHub Profile</a>
+          <a href="https://lonewollff-data-alchemy.hf.space/" target="_blank" rel="noopener" class="cta-btn"><span class="cta-icon">⚡</span>HuggingFace Space</a>
+        </div>
+      </div>
+    </div>
+
+  </section><!-- /s6 -->
+
+</div><!-- /app -->
+
+<script src="js/shared.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>
