@@ -1229,6 +1229,15 @@ header.show { opacity: 1; transform: translateY(0) }
   #scroll-nav { right: 10px; }
   .sn-dot { width: 16px; }
 
+   /* Bring back the scroll hint so users know to swipe! */
+  .scroll-hint { 
+    display: flex; 
+    bottom: 20px; /* Gives it breathing room above the phone's swipe bar */
+    transform: translateX(-50%) scale(0.85); /* Scales it down slightly to save space */
+    z-index: 10;
+  }
+
+   
   /* ── Sticky Card ── */
   #sticky-card {
     top: 52px;
