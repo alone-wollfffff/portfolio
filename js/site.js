@@ -21,7 +21,7 @@ const shared = window.PortfolioShared;
    CERT DATA
 ================================================================ */
 const CERTS = [
-  { name: 'Google AI Essentials', cat: 'ai', issuer: 'Google · Coursera', year: '2024', img: 'src/cert/Google AI Essentials.jpg', url: 'https://coursera.org/share/c4a75fb7cc0c791c8512bc71ef788cb2' },
+  { name: 'Google AI Essentials', cat: 'ai', issuer: 'Google · Coursera', year: '2024', img: 'src/cert/Google AI Essentials.jpg', url: 'https://coursera.org/verify/specialization/C37RSIB1GM5R' },
   { name: 'AI Tools Workshop', cat: 'ai', issuer: 'be10X', year: '2025', img: 'src/cert/Be10x_WorkShop.jpg', url: 'https://certx.in/certificate/0270772f-3809-4400-b29b-1e1c61cd0997493876' },
   { name: 'Introduction to AI', cat: 'ai', issuer: 'Google · Coursera', year: '2024', img: 'src/cert/Google-Introduction to AI.jpg', url: 'https://coursera.org/verify/1E5HBIEAZGIW' },
   { name: 'Maximize Productivity With AI', cat: 'ai', issuer: 'Google · Coursera', year: '2024', img: 'src/cert/Google-Maximize Productivity With AI Tools.jpg', url: 'https://coursera.org/verify/S5KACMZGGWQZ' },
