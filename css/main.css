@@ -1230,12 +1230,15 @@ header.show { opacity: 1; transform: translateY(0) }
   .sn-dot { width: 16px; }
 
    /* Bring back the scroll hint so users know to swipe! */
+ /* --- MOBILE SCROLL HINT OVERRIDE --- */
+@media (max-width: 768px) {
   .scroll-hint { 
-    display: flex; 
-    bottom: 20px; /* Gives it breathing room above the phone's swipe bar */
-    transform: translateX(-50%) scale(0.85); /* Scales it down slightly to save space */
-    z-index: 10;
+    display: flex !important; 
+    bottom: 25px !important; 
+    transform: translateX(-50%) scale(0.85) !important;
+    z-index: 10 !important;
   }
+}
 
    
   /* ── Sticky Card ── */
