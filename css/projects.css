@@ -964,3 +964,14 @@ header.show { opacity: 1; transform: translateY(0) }
   #scroll-nav  { display: none; }
   .built-h2    { font-size: clamp(2rem, 13vw, 3rem); }
 }
+
+
+/* --- MOBILE SCROLL HINT OVERRIDE --- */
+@media (max-width: 768px) {
+  .proj-scroll-hint { 
+    display: flex !important; 
+    margin-top: 20px !important;
+    padding-bottom: 30px !important;
+    transform: scale(0.85) !important; 
+  }
+}
