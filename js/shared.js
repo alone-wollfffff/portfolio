@@ -132,13 +132,13 @@ function initThree(mouseObj, camTarget, SEC_CAM_Y) {
 
  const burstGeo = new THREE.TetrahedronGeometry(1, 0);
   const burstMat = new THREE.MeshPhongMaterial({
-    color: 0x000000,      /* Pure black base */
-    emissive: 0x111111,   /* The secret self-glowing dark gray */
-    specular: 0x222222,   /* The exact highlight color */
-    shininess: 8.74,      /* The exact highlight sharpness */
+    color: 0x050505,      /* Very dark base */
+    emissive: 0x121216,   /* Subtle cool-slate glow */
+    specular: 0x777788,   /* Bright, sharp silver highlight to make the 3D edges POP */
+    shininess: 38,        /* Cranked up for a polished glass/metal look */
     flatShading: true, 
     transparent: true, 
-    opacity: 0.9          /* Slightly raised opacity for better reflections */
+    opacity: 0.85          
   });
 
   const instancedMesh = new THREE.InstancedMesh(burstGeo, burstMat, BURST_COUNT);
@@ -194,7 +194,7 @@ function initThree(mouseObj, camTarget, SEC_CAM_Y) {
   const ptGeo = new THREE.BufferGeometry();
   ptGeo.setAttribute('position', new THREE.BufferAttribute(ptPos, 3));
   scene.add(new THREE.Points(ptGeo, new THREE.PointsMaterial({
-    color: 0x222222, 
+    color: 0x555566, /* Clean silver-slate dust */
     size: .06, 
     transparent: true, 
     opacity: .8,
