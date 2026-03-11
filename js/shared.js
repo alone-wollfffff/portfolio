@@ -130,9 +130,15 @@ function initThree(mouseObj, camTarget, SEC_CAM_Y) {
   const burstGroup  = new THREE.Group();
   const burstData   = [];
 
-  const burstGeo = new THREE.TetrahedronGeometry(1, 0);       // base size = 1
+ const burstGeo = new THREE.TetrahedronGeometry(1, 0);
   const burstMat = new THREE.MeshPhongMaterial({
-    color: 0x1e1e1e, flatShading: true, transparent: true, opacity: .82
+    color: 0x000000,      /* Pure black base */
+    emissive: 0x111111,   /* The secret self-glowing dark gray */
+    specular: 0x222222,   /* The exact highlight color */
+    shininess: 8.74,      /* The exact highlight sharpness */
+    flatShading: true, 
+    transparent: true, 
+    opacity: 0.9          /* Slightly raised opacity for better reflections */
   });
 
   const instancedMesh = new THREE.InstancedMesh(burstGeo, burstMat, BURST_COUNT);
@@ -188,7 +194,10 @@ function initThree(mouseObj, camTarget, SEC_CAM_Y) {
   const ptGeo = new THREE.BufferGeometry();
   ptGeo.setAttribute('position', new THREE.BufferAttribute(ptPos, 3));
   scene.add(new THREE.Points(ptGeo, new THREE.PointsMaterial({
-    color: 0x2a2a3a, size: .06, transparent: true, opacity: .5,
+    color: 0x222222, 
+    size: .06, 
+    transparent: true, 
+    opacity: .8,
   })));
 
   window.addEventListener('resize', () => {
