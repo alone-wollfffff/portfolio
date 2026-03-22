@@ -1,0 +1,179 @@
+:root {
+  --page-shell-max: 1440px;
+  --section-inline-pad: clamp(18px, 4vw, 56px);
+  --mobile-section-gap: clamp(20px, 4vw, 32px);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.portfolio-page {
+  min-height: 100%;
+}
+
+#preloader {
+  overflow: clip;
+}
+
+.page-app {
+  width: 100%;
+}
+
+.page-sticky-card {
+  max-width: min(var(--page-shell-max), calc(100vw - (var(--page-gutter) * 2)));
+  margin-inline: auto;
+  overflow-x: clip;
+}
+
+header {
+  gap: 20px;
+  padding-inline: clamp(18px, 4vw, 48px);
+}
+
+.header-left {
+  min-width: fit-content;
+}
+
+#main-nav {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: clamp(14px, 1.8vw, 26px);
+}
+
+#main-nav a {
+  margin-left: 0;
+}
+
+.hero-h1,
+.built-h2,
+.contact-h2,
+.cert-head-h2,
+.cert-browser-title {
+  text-wrap: balance;
+}
+
+.hero-desc,
+.proj-hero-sub,
+.contact-sub,
+.cert-hero-sub {
+  max-width: min(100%, 42rem);
+  line-height: 1.6;
+}
+
+.hero-btns,
+.contact-btns,
+.proj-stats,
+.pcb-tags,
+.cert-legend,
+.stat-row {
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  min-width: 0;
+}
+
+.screen,
+.s-inner {
+  overflow-x: clip;
+}
+
+@media (max-width: 1180px) {
+  .page-sticky-card {
+    left: clamp(18px, 3vw, 32px);
+    right: clamp(18px, 3vw, 32px);
+  }
+
+  .hero-inner,
+  .proj-hero-inner,
+  .cert-hero-inner,
+  .contact-inner,
+  .cert-head-inner {
+    padding-inline: clamp(22px, 4vw, 40px);
+  }
+
+  .hero-photo-wrap {
+    width: clamp(190px, 26vw, 290px);
+    height: clamp(240px, 32vw, 360px);
+  }
+}
+
+@media (max-width: 960px) {
+  header {
+    padding-top: 20px;
+  }
+
+  .hero-inner,
+  .proj-hero-inner,
+  .cert-hero-inner {
+    gap: 24px;
+  }
+
+  .proj-stats {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    padding-inline: 16px;
+  }
+
+  #main-nav {
+    padding-inline: 16px;
+  }
+
+  .s-inner,
+  .hero-inner,
+  .proj-hero-inner,
+  .cert-hero-inner,
+  .contact-inner,
+  .cert-head-inner {
+    padding-left: clamp(16px, 4vw, 24px) !important;
+    padding-right: clamp(16px, 4vw, 24px) !important;
+  }
+
+  .hero-btns,
+  .contact-btns {
+    width: 100%;
+  }
+
+  .hero-btns > *,
+  .contact-btns > * {
+    width: min(100%, 320px);
+  }
+
+  .proj-stats {
+    width: 100%;
+    gap: 14px;
+  }
+
+  .proj-stat-item {
+    min-width: 92px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-left {
+    gap: 14px;
+  }
+
+  .logo {
+    font-size: 0.78rem;
+  }
+
+  .hero-h1 {
+    line-height: 0.92;
+  }
+
+  .hero-role {
+    letter-spacing: 0.14em;
+  }
+}
