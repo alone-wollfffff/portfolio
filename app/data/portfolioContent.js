@@ -23,7 +23,7 @@ export const homeContent = {
     ],
     stats: [
       { value: '3+', label: 'Live Projects' },
-      { value: '15+', label: 'Certificates' },
+      { value: '20+', label: 'Certificates' },
       { value: '7+', label: 'LLM Tools' },
       { value: '&#8734;', label: 'Curiosity' },
     ],
