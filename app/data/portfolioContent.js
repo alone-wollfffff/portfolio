@@ -110,7 +110,7 @@ export const projects = [
     cardSide: 'left',
     mockupSide: 'right',
     meta: '// Project 03 · 2026 - Present',
-    titleHtml: '&#128302; Review Intelligence',
+    titleHtml: '&#10024; Review Intelligence',
     description:
       'A full-stack analytics tool that transforms raw reviews from YouTube, Amazon, and Google Play into structured sentiment reports. Paste a link or raw text — the pipeline handles scraping, NLP classification, emotion analysis, topic clustering, and trust scoring. Outputs a live dashboard with PDF/JSON export and a side-by-side compare workflow.',
     tags: ['React', 'FastAPI', 'Python', 'NLP', 'HuggingFace', 'Transformers', 'Redis', 'Recharts', 'TailwindCSS'],
